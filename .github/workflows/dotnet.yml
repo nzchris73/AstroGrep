@@ -14,12 +14,15 @@ jobs:
 
     runs-on: windows-2019
 
+    env:
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 5.x
+        cache: true
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
