@@ -8,8 +8,8 @@ source code.
 
 Build Instructions
 -------------------------------------------------------------------------------
-Visual Studio 2022 (Community is used/supported)
-- .Net Framework 4.8
+Visual Studio 2026 (Community is used/supported)
+- .Net 10.0
 
 Visual Studio Extensions:
 - CodeMaid (Used)
