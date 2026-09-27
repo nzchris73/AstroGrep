@@ -63,6 +63,7 @@ namespace AstroGrep.Windows.Forms
 		/// <history>
 		/// [Curtis_Beard]		10/12/2012	Created
 		/// </history>
+#pragma warning disable WFO1000
 		public TextEditor Editor
 		{
 			get { return __Editor; }
@@ -72,6 +73,7 @@ namespace AstroGrep.Windows.Forms
 				__OriginalFileType = value.FileType;
 			}
 		}
+#pragma warning restore WFO1000
 
 		/// <summary>
 		/// Contains the current file types defined.
@@ -80,11 +82,13 @@ namespace AstroGrep.Windows.Forms
 		/// [Curtis_Beard]		04/20/2007	Created
 		/// [Curtis_Beard]		08/13/2014	FIX: better detection of file types
 		/// </history>
+#pragma warning disable WFO1000
 		public List<string> ExistingFileTypes
 		{
 			get { return __ExistingFileTypes; }
 			set { __ExistingFileTypes = value; }
 		}
+#pragma warning restore WFO1000
 
 		/// <summary>
 		/// Determines whether the control is in Addition mode.
@@ -92,10 +96,12 @@ namespace AstroGrep.Windows.Forms
 		/// <history>
 		/// [Curtis_Beard]		07/21/2006	Created
 		/// </history>
+#pragma warning disable WFO1000
 		public bool IsAdd
 		{
 			set { __Add = value; }
 		}
+#pragma warning restore WFO1000
 
 		/// <summary>
 		/// Determines whether the All File Types has already been used.

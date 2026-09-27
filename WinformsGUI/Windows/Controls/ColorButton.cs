@@ -403,6 +403,7 @@ namespace AstroGrep.Windows.Controls
 		/// <history>
 		/// 	[Curtis_Beard]	   11/18/2005	Created
 		/// </history>
+#pragma warning disable WFO1000
 		[Category("Appearance"), 
 			DefaultValue(true), 
 			Description("The currently selected color.")]

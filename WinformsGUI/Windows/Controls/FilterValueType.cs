@@ -195,6 +195,8 @@ namespace AstroGrep.Windows.Controls
       /// [Curtis_Beard]	   11/11/2014	Initial
       /// [Curtis_Beard]	   08/16/2016	CHG: 107, allow time selection 
       /// </history>
+#pragma warning disable WFO1000
+      [System.ComponentModel.Browsable(false)]
       public string Value
       {
          get

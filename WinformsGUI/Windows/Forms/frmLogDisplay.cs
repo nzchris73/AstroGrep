@@ -110,20 +110,25 @@ namespace AstroGrep.Windows.Forms
 		/// [Curtis_Beard]	   12/06/2012	ADD: 1741735, initial dialog for filterable log items viewer.
 		/// [Curtis_Beard]	   11/11/2014	CHG: make nullable so that null means show all
 		/// </history>
+#pragma warning disable WFO1000
 		public LogItem.LogItemTypes? DefaultFilterType
 		{
 			get;
 			set;
 		}
+#pragma warning restore WFO1000
 
 		/// <summary>
 		/// Collection of messages to display
 		/// </summary>
+#pragma warning disable WFO1000
+		[System.ComponentModel.Browsable(false)]
 		public LogItems LogItems
 		{
 			get;
 			set;
 		}
+#pragma warning restore WFO1000
 
 		/// <summary>
 		/// Adds the specified LogItemType to the display.

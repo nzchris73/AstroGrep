@@ -128,11 +128,14 @@ namespace AstroGrep.Windows.Forms
 		/// <history>
 		/// [Curtis_Beard]		09/26/2012	Initial: 3572487
 		/// </history>
+#pragma warning disable WFO1000
+		[System.ComponentModel.Browsable(false)]
 		public CommandLineProcessing.CommandLineArguments CommandLineArgs
 		{
 			get { return __CommandLineArgs; }
 			set { __CommandLineArgs = value; }
 		}
+#pragma warning restore WFO1000
 
 		/// <summary>
 		/// Allows Ctrl-F keyboard event to set focus to search text field.

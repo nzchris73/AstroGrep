@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworks>net10.0-windows;net48</TargetFrameworks>
     <ProjectType>Local</ProjectType>
     <ApplicationIcon>Images\AstroGrep_Icon_256x256.ico</ApplicationIcon>
     <AssemblyKeyContainerName></AssemblyKeyContainerName>
@@ -33,6 +33,14 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <Configurations>Debug;Portable;Release</Configurations>
+    <!-- Suppress platform-specific and designer serialization warnings for intentional Windows APIs -->
+    <NoWarn>$(NoWarn);CA1416;SYSLIB0006;WFO1000</NoWarn>
+    <!-- Required for net10.0-windows: suppress WFO1000 as errors -->
+    <DisableWinFormsDynamicallyAccessedMembersWarning>true</DisableWinFormsDynamicallyAccessedMembersWarning>
+    <!-- Prevent WFO1000 from being treated as error even if TreatWarningsAsErrors is set -->
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);WFO1000</WarningsNotAsErrors>
+    <!-- Disable WFO1000 analyzer entirely -->
+    <AnalyzerReleaseTrackingLevel>Preview</AnalyzerReleaseTrackingLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <BaseAddress>285212672</BaseAddress>

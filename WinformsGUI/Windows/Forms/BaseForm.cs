@@ -13,6 +13,7 @@ namespace AstroGrep.Windows.Forms
 		/// <summary>
 		/// Determines if the common logic for color changes is applied at the form level.
 		/// </summary>
+		[System.ComponentModel.Browsable(false)]
 		public bool ProcessColorChange { get; set; } = true;
 
 		/// <summary>

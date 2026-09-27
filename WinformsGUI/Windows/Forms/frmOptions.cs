@@ -103,7 +103,10 @@ namespace AstroGrep.Windows.Forms
 		/// <history>
 		/// [Curtis_Beard]		08/26/2022	Created
 		/// </history>
+#pragma warning disable WFO1000
+		[System.ComponentModel.Browsable(false)]
 		public bool IsThemeChange { get; set; } = false;
+#pragma warning restore WFO1000
 
 		/// <summary>
 		/// Add a new text editor.
