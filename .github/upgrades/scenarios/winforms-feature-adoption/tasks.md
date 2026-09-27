@@ -4,13 +4,13 @@
 
 Modernize the AstroGrep WinForms UI application with .NET 10 features. Three-phase approach: enable dark mode application-wide, modernize async APIs per-form, and add MVVM data binding patterns to forms with complex data handling.
 
-**Progress**: 1/15 tasks complete <progress value="6" max="100"></progress> 6%
+**Progress**: 2/15 tasks complete <progress value="13" max="100"></progress> 13%
 
 ## Tasks
 
 ### Phase 1: Dark Mode Support
 - ✅ 01-enable-dark-mode-application-wide: Enable dark mode application-wide
-- 🔳 02-adapt-base-form-for-dark-mode: Update BaseForm for dark mode
+- ✅ 02-adapt-base-form-for-dark-mode: Update BaseForm for dark mode
 - 🔳 03-adapt-main-form-for-dark-mode: Update frmMain for dark mode
 - 🔳 04-adapt-dialogs-for-dark-mode: Update all dialog forms for dark mode
 - 🔳 05-adapt-custom-controls-for-dark-mode: Update custom controls for dark mode

@@ -6,8 +6,8 @@
   "lastUpdateTime": "2026-09-27T08:22:35.3742592Z",
   "properties": {
     "taskStates": {
-      "01-enable-dark-mode-application-wide": "InProgress",
-      "02-adapt-base-form-for-dark-mode": "InProgress"
+      "01-enable-dark-mode-application-wide": "Completed",
+      "02-adapt-base-form-for-dark-mode": "Completed"
     }
   },
   "folderPath": ""
