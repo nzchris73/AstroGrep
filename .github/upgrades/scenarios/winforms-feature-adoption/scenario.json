@@ -1,0 +1,13 @@
+{
+  "scenarioId": "winforms-feature-adoption",
+  "operationId": "d0981cfe-a3b2-4641-828a-67855132d8ac",
+  "description": "Adopts modern WinForms features in .NET 8\u002B applications including dark mode (Application.SetColorMode, SystemColors), async APIs (Control.InvokeAsync, Form.ShowDialogAsync, TaskDialog.ShowDialogAsync), and MVVM patterns (ViewModels, INotifyPropertyChanged, Commands, DataContext). Use when user requests \u0022modernize WinForms\u0022, \u0022add dark mode to WinForms\u0022, \u0022implement WinForms MVVM\u0022, \u0022add async to WinForms\u0022, \u0022use InvokeAsync\u0022, \u0022adopt modern WinForms features\u0022, or as a post-upgrade enhancement after dotnet-version-upgrade scenario completes. Also triggers for \u0022Application.SetColorMode\u0022, \u0022WinForms dark theme\u0022, \u0022WinForms async patterns\u0022, \u0022WinForms MVVM architecture\u0022, \u0022modernize WinForms UI\u0022, and \u0022enhance WinForms application\u0022. Prerequisite: projects must already target .NET 8\u002B (dark mode and async require .NET 9\u002B).\n",
+  "startTime": "2026-09-27T08:04:47.9221234Z",
+  "lastUpdateTime": "2026-09-27T08:19:18.5464965Z",
+  "properties": {
+    "taskStates": {
+      "01-enable-dark-mode-application-wide": "Completed"
+    }
+  },
+  "folderPath": ""
+}

@@ -73,6 +73,11 @@ namespace AstroGrep.Windows
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
+#if NET10_0_WINDOWS
+			// Enable dark mode support for .NET 10
+			Application.SetColorMode(SystemColorMode.System);
+#endif
+
 			// Unhandled exception handlers
 			if (!System.Diagnostics.Debugger.IsAttached)
 			{

@@ -1,4 +1,10 @@
-﻿Changelog for AstroGrep v4.4.9
+﻿Changelog for AstroGrep v5.0.0
+===================================================================
+Other:
+- Updated to .NET 10
+
+
+Changelog for AstroGrep v4.4.9
 ===================================================================
 Bugs
 -126: Directory exclusions not being applied to sub directories
