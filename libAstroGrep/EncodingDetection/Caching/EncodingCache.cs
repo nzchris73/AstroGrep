@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+#if NETFRAMEWORK
 using System.Runtime.Serialization.Formatters.Binary;
+#endif
 using System.Runtime.Serialization;
 
 using AstroGrep.Common;
@@ -179,6 +181,7 @@ namespace libAstroGrep.EncodingDetection.Caching
                fInfo.Directory.Create();
             }
 
+#if NETFRAMEWORK
             using (FileStream fs = new FileStream(path, FileMode.Create))
             {
                using (var deflate = new DeflateStream(fs, CompressionMode.Compress))
@@ -189,6 +192,10 @@ namespace libAstroGrep.EncodingDetection.Caching
                   formatter.Serialize(deflate, cache);
                }
             }
+#else
+            // .NET 5+ does not support BinaryFormatter. Cache serialization is skipped.
+            LogClient.Instance.Logger.Debug("Cache serialization skipped on .NET 5+ (BinaryFormatter not available)");
+#endif
          }
          catch (SerializationException e)
          {
@@ -225,6 +232,7 @@ namespace libAstroGrep.EncodingDetection.Caching
 
             if (File.Exists(path))
             {
+#if NETFRAMEWORK
                using (FileStream fs = new FileStream(path, FileMode.Open))
                {
                   using (var deflate = new DeflateStream(fs, CompressionMode.Decompress))
@@ -251,6 +259,12 @@ namespace libAstroGrep.EncodingDetection.Caching
                      LogClient.Instance.Logger.Info("Encoding cache loaded successfully with {0} items", cache.Count);
                   }
                }
+#else
+               // .NET 5+ does not support BinaryFormatter. Cache deserialization is skipped.
+               LogClient.Instance.Logger.Debug("Cache deserialization skipped on .NET 5+ (BinaryFormatter not available)");
+               cache = new Dictionary<string, EncodingCacheItem>();
+               currentPerformance = performanceSetting;
+#endif
             }
          }
          catch (SerializationException e)

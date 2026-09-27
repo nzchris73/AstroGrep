@@ -156,7 +156,7 @@ namespace AstroGrep.Windows.Forms
 			this.lblDisclaimer.Name = "lblDisclaimer";
 			this.lblDisclaimer.Size = new System.Drawing.Size(562, 22);
 			this.lblDisclaimer.TabIndex = 8;
-			this.lblDisclaimer.Text = "Created by Theodore Ward and converted to .Net by Curtis Beard";
+			this.lblDisclaimer.Text = "Created by Theodore Ward, converted to .Net by Curtis Beard and converted to .Net 10 by nzchris73";
 			// 
 			// frmAbout
 			// 

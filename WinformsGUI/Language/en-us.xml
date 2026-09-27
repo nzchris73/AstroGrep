@@ -122,7 +122,7 @@
       <control name="LicenseLinkLabel" value="GNU License"/>
       <control name="CopyrightLabel" value="Copyright (C) 2002 - {0} AstroComma Inc."/>
       <control name="lblDescription" value="Additional Copyright (C) 2002 to Theodore L. Ward. AstroGrep comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions."/>
-      <control name="lblDisclaimer" value="Created by Theodore Ward and converted to .Net by Curtis Beard"/>
+      <control name="lblDisclaimer" value="Created by Theodore Ward, converted to .Net by Curtis Beard and converted to .Net 10 by nzchris73"/>
    </screen>
    
    <screen name="frmAddEditTextEditor" value="Text Editors">
