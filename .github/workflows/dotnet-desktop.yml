@@ -40,9 +40,9 @@ name: .NET Core Desktop
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "upgrade-dotnet-10" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "upgrade-dotnet-10" ]
 
 jobs:
 
@@ -68,10 +68,10 @@ jobs:
         fetch-depth: 0
 
     # Install the .NET Core workload
-    - name: Install .NET Core
+    - name: Install .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 4.8.x
+        dotnet-version: 10.x
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
