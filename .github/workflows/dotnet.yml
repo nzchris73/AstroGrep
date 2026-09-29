@@ -12,14 +12,14 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2019
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 5.x
+        dotnet-version: 4.8
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
