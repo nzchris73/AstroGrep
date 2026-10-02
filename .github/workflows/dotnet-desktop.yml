@@ -52,7 +52,7 @@ jobs:
       matrix:
         configuration: [Debug, Release]
 
-    runs-on: windows-2022  # For a list of available runner types, refer to
+    runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
@@ -71,7 +71,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 4.8.x
+        dotnet-version: '10.0.x'
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
@@ -108,8 +108,8 @@ jobs:
       run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx
 
     # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
-- name: Upload build artifacts
-  uses: actions/upload-artifact@v4
-  with:
-    name: MSIX Package
-    path: ${{ env.Wap_Project_Directory }}\AppPackages
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: MSIX Package
+        path: ${{ env.Wap_Project_Directory }}\AppPackages

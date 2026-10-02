@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "dependencies": {
+    ".NETFramework,Version=v4.8": {
+      "NLog": {
+        "type": "Direct",
+        "requested": "[5.0.2, )",
+        "resolved": "5.0.2",
+        "contentHash": "gucQmkaCLsyMV7OFCRwgX1J9gUDSd0ej+AZW113zmNnTtgGAicZSoE8pKPFWL6GYct1jin8i0t5SzNghyW2BWA=="
+      },
+      "astrogrep.common": {
+        "type": "Project",
+        "dependencies": {
+          "NLog": "[5.0.2, )"
+        }
+      }
+    }
+  }
+}
