@@ -66,6 +66,7 @@ namespace libAstroGrep
 
 		private readonly int userFilterCount = 0;
 		private Thread _thread;
+		private volatile bool _shouldCancel = false;
 
 		/// <summary>
 		/// Initializes a new instance of the Grep class.
@@ -289,18 +290,15 @@ namespace libAstroGrep
 		}
 
 		/// <summary>
-		/// Cancels an asynchronous grep request.
+		/// Cancels an asynchronous grep request using cooperative cancellation.
 		/// </summary>
 		/// <history>
 		/// [Curtis_Beard]		07/12/2006	Created
+		/// [Curtis_Beard]		2024		CHG: Replace Thread.Abort() with cooperative cancellation for .NET Core compatibility
 		/// </history>
 		public void Abort()
 		{
-			if (_thread != null)
-			{
-				_thread.Abort();
-				_thread = null;
-			}
+			_shouldCancel = true;
 		}
 
 		/// <summary>
@@ -311,6 +309,7 @@ namespace libAstroGrep
 		/// </history>
 		public void BeginExecute()
 		{
+			_shouldCancel = false;  // Reset cancellation flag
 			_thread = new Thread(StartGrep) { IsBackground = true };
 			_thread.Start();
 		}
@@ -645,6 +644,12 @@ namespace libAstroGrep
 		/// </history>
 		private void Execute(DirectoryInfo sourceDirectory, string sourceDirectoryFilter, string sourceFileFilter, bool isStartDirectory = false, List<string> allFileFilters = null)
 		{
+			// Check for cancellation request
+			if (_shouldCancel)
+			{
+				return;
+			}
+
 			// skip directory if matches an exclusion item (exclude starting directories)
 			if (!isStartDirectory && SearchSpec != null && SearchSpec.FilterItems != null)
 			{
@@ -673,6 +678,12 @@ namespace libAstroGrep
 			//Search Every File for search text
 			foreach (FileInfo SourceFile in sourceDirectory.EnumerateFiles(filePattern))
 			{
+				// Check for cancellation during file enumeration
+				if (_shouldCancel)
+				{
+					return;
+				}
+
 				bool processFile = true;
 				if (sourceFileFilter != null && !StriktMatch(SourceFile.Extension, sourceFileFilter.Trim(), allFileFilters))
 				{
@@ -694,6 +705,12 @@ namespace libAstroGrep
 				//Recursively go through every subdirectory and it's files (according to folder filter)
 				foreach (var sourceSubDirectory in sourceDirectory.EnumerateDirectories(dirPattern))
 				{
+					// Check for cancellation during directory enumeration
+					if (_shouldCancel)
+					{
+						return;
+					}
+
 					try
 					{
 						Execute(sourceSubDirectory, sourceDirectoryFilter, sourceFileFilter, false, allFileFilters);
@@ -1035,6 +1052,12 @@ namespace libAstroGrep
 
 				do
 				{
+					// Check for cancellation during line processing
+					if (_shouldCancel)
+					{
+						break;
+					}
+
 					string textLine = _reader.ReadLine();
 
 					if (textLine == null)
@@ -1309,6 +1332,7 @@ namespace libAstroGrep
 		/// [Curtis_Beard]      07/12/2006	Created
 		/// [Curtis_Beard]		08/21/2007	FIX: 1778467, send cancel event on generic error
 		/// [Curtis_Beard]		05/28/2015	FIX: 69, Created for speed improvements for encoding detection
+		/// [Curtis_Beard]		2024		CHG: Cooperative cancellation replaces ThreadAbortException handling
 		/// </history>
 		private void StartGrep()
 		{
@@ -1316,11 +1340,15 @@ namespace libAstroGrep
 			{
 				Execute();
 
-				OnSearchComplete();
-			}
-			catch (ThreadAbortException)
-			{
-				OnSearchCancel();
+				// Check if cancellation was requested during execution
+				if (_shouldCancel)
+				{
+					OnSearchCancel();
+				}
+				else
+				{
+					OnSearchComplete();
+				}
 			}
 			catch (Exception ex)
 			{
