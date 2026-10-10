@@ -995,7 +995,7 @@ namespace AstroGrep.Windows.Forms
 		/// </history>
 		private void donateToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(ProductInformation.DonationUrl);
+			ProductInformation.OpenUrl(ProductInformation.DonationUrl);
 		}
 
 		/// <summary>
@@ -5107,7 +5107,7 @@ namespace AstroGrep.Windows.Forms
 			//Future?: support currently selected language help file (AstroGrep-Help-en-us.chm, AstroGrep-Help-da-dk.chm, etc.)
 			//Help.ShowHelp(this, Path.Combine(Constants.ProductLocation, "AstroGrep-Help.chm"));
 
-			System.Diagnostics.Process.Start(ProductInformation.HelpUrl);
+			ProductInformation.OpenUrl(ProductInformation.HelpUrl);
 		}
 
 		/// <summary>
@@ -5139,7 +5139,7 @@ namespace AstroGrep.Windows.Forms
 		/// </history>
 		private void ViewRegExHelpMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(ProductInformation.RegExHelpUrl);
+			ProductInformation.OpenUrl(ProductInformation.RegExHelpUrl);
 		}
 
 		/// <summary>

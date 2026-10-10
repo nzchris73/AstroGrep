@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -46,22 +47,22 @@ namespace AstroGrep.Common
 		public static string DonationUrl = "https://sourceforge.net/p/astrogrep/donate/";
 
 		/// <summary>The URL to the download page</summary>
-		public static string DownloadUrl = "http://astrogrep.sourceforge.net/download/";
+		public static string DownloadUrl = "https://astrogrep.sourceforge.net/download/";
 
 		/// <summary>The URL to the help page</summary>
-		public static string HelpUrl = "http://astrogrep.sourceforge.net/help/";
+		public static string HelpUrl = "https://astrogrep.sourceforge.net/help/";
 
 		/// <summary>The URL to the current license</summary>
-		public static string LicenseUrl = "http://www.gnu.org/copyleft/gpl.html";
+		public static string LicenseUrl = "https://www.gnu.org/copyleft/gpl.html";
 
 		/// <summary>The URL to the regular expressions help page</summary>
 		public static string RegExHelpUrl = "https://msdn.microsoft.com/en-us/library/az24scfc.aspx";
 
 		/// <summary>The URL to the current version</summary>
-		public static string VersionUrl = "http://astrogrep.sourceforge.net/version.html";
+		public static string VersionUrl = "https://astrogrep.sourceforge.net/version.html";
 
 		/// <summary>The URL to the current website</summary>
-		public static string WebsiteUrl = "http://astrogrep.sourceforge.net";
+		public static string WebsiteUrl = "https://astrogrep.sourceforge.net";
 
 		/// <summary>
 		/// The application's current version.
@@ -81,10 +82,58 @@ namespace AstroGrep.Common
 			get
 			{
 #if PORTABLE
-			return true;
+				return true;
 #else
 				return false;
 #endif
+			}
+		}
+
+		/// <summary>
+		/// Opens a URL in the default browser. Works on both .NET Framework and .NET Core.
+		/// </summary>
+		/// <param name="url">The URL to open</param>
+		public static void OpenUrl(string url)
+		{
+			try
+			{
+#if NET10_0_WINDOWS
+				// On .NET 10 (Core), UseShellExecute must be true to open URLs
+				var processInfo = new ProcessStartInfo
+				{
+					FileName = url,
+					UseShellExecute = true
+				};
+				Process.Start(processInfo);
+#else
+				// On .NET Framework, UseShellExecute defaults to true
+				Process.Start(url);
+#endif
+			}
+			catch
+			{
+				// If Process.Start fails, attempt fallback using explicit browser command
+				try
+				{
+#if _WINDOWS
+					Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+#else
+					// On non-Windows platforms
+					if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
+					{
+						Process.Start("xdg-open", url);
+					}
+					else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+					{
+						Process.Start("open", url);
+					}
+#endif
+				}
+				catch
+				{
+					// Silently fail if all attempts to open the URL fail
+					System.Diagnostics.Debug.WriteLine($"Failed to open URL: {url}");
+				}
 			}
 		}
 	}
