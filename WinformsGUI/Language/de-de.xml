@@ -6,9 +6,9 @@
       <control name="lblFileTypes" value="Dateitypen" />
       <control name="btnCancel" value="Abbre&amp;chen" />
       <control name="lblSearchPath" value="Suchpfad" />
-      <control name="chkNegation" value="&amp;Negierung" tooltip="Suche nach Dateien, die den Suchtext nicht enthalten" />
+      <control name="chkNegation" value="&amp;Suchfilter negieren" tooltip="Suche nach Dateien, die den Suchtext nicht enthalten" />
       <control name="chkFileNamesOnly" value="&amp;Zeige nur Dateinamen" tooltip="Zeigt nur die Dateinamen an, in welchen der Suchtext vorkommt (kann für große Dateien schneller sein)" />
-      <control name="chkRecurse" value="&amp;Rekursiv" tooltip="Suche auch in Unterverzeichnissen" />
+      <control name="chkRecurse" value="&amp;Unterverzeichnisse einschließen" tooltip="Suche auch in Unterverzeichnissen" />
       <control name="chkWholeWordOnly" value="&amp;Ganzes Wörter" tooltip="Nur nach ganzen Wörtern suchen (nicht nach Teilworten)" />
       <control name="chkCaseSensitive" value="Groß-/&amp;Kleinschreibung beachten" tooltip="Achtet genau auf groß- und kleingeschriebene Buchstaben" />
       <control name="chkRegularExpressions" value="Reguläre A&amp;usdrücke" tooltip="Benutzt &quot;Reguläre Ausdrücke&quot; zur Suche" />
@@ -46,7 +46,7 @@
          <menuitem index="5" value="&amp;Ergebnisse drucken..." />
          <menuitem index="6" value="-" />
          <menuitem index="7" value="Bee&amp;nden" />
-         <menuitem index="8" value="Beenden Sie alle" />
+         <menuitem index="8" value="Alle Beenden" />
       </menu>
       <menu index="1" value="&amp;Bearbeiten">
          <menuitem index="0" value="&amp;Alle Dateien auswählen" />
@@ -59,7 +59,7 @@
          <menuitem index="3" value="&amp;Alle Meldungen" />
          <menuitem index="4" value="-" />
          <menuitem index="5" value="&amp;Zoom">
-            <menuitem index="0" value="Vergrößen (Ctrl+Mouse Wheel Up)"/>
+            <menuitem index="0" value="Vergrößern (Ctrl+Mouse Wheel Up)"/>
             <menuitem index="1" value="Verkleinern (Ctrl+Mouse Wheel Down)"/>
             <menuitem index="2" value="Auf Standardgröße zurücksetzen"/>
          </menuitem>
@@ -101,7 +101,7 @@
       <control name="sbErrorCountPanel" value="Fehler: 0" tooltip="Doppelklicken zum Anzeige der Fehlern"/>
 
       <!-- Results Toolstrip -->
-      <control name="ResultsZoomInButton" tooltip="Vergrößen (Ctrl+Mouse Wheel Up)" />
+      <control name="ResultsZoomInButton" tooltip="Vergrößern (Ctrl+Mouse Wheel Up)" />
       <control name="ResultsZoomOutButton" tooltip="Verkleinern (Ctrl+Mouse Wheel Down)" />
       <control name="ResultsZoomResetButton" tooltip="Auf Standardgröße zurücksetzen" />
       <control name="ResultsViewLineNumbersButton" tooltip="Zeilennummern" />
@@ -113,8 +113,8 @@
       <control name="ResultsContextLinesLabel" value="Kontextzeilen" />
       <control name="ResultsContextLinesBeforeCombo" tooltip="Zeigt Zeilen über dem Fund an" />
       <control name="ResultsContextLinesAfterCombo" tooltip="Zeigt Zeilen unter dem Fund an" />
-      <control name="ResultsNavPrevButton" tooltip="Zum vorherigen Spiel wechseln" />
-      <control name="ResultsNavNextButton" tooltip="Zum nächsten Spiel gehen" />
+      <control name="ResultsNavPrevButton" tooltip="Zum vorherigen Treffer navigieren" />
+      <control name="ResultsNavNextButton" tooltip="Zum nächsten Treffer navigieren" />
    </screen>
 
    <screen name="frmAbout" value="Über {0}">
@@ -122,7 +122,7 @@
       <control name="LicenseLinkLabel" value="GNU-Lizenz"/>
       <control name="CopyrightLabel" value="Copyright (C) 2002 bis {0} AstroComma Inc."/>
       <control name="lblDescription" value="Zusätzliche Copyright (C) 2002 bis Theodore L. Ward. AstroGrep kommt KEINERLEI GARANTIE. Dies ist freie Software, und Sie sind herzlich eingeladen, um sie unter bestimmten Bedingungen weitergeben dürfen."/>
-      <control name="lblDisclaimer" value="Verfasst von Theodore Ward und .Net von Curtis Beard umgewandelt"/>
+      <control name="lblDisclaimer" value="Verfasst von Theodore Ward und portiert auf .NET von Curtis Beard"/>
    </screen>
 
    <screen name="frmAddEditTextEditor" value="Texteditoren">
@@ -141,8 +141,8 @@
    </screen>
 
    <screen name="frmOptions" value="Einstellungen">
-      <control name="chkRightClickOption" value="Auf &amp;Rechtsklick um Ordnereinstellungen öffnen" />
-      <control name="lblStoredPaths" value="Anzahl der zuletzt benutzten Pfade." />
+      <control name="chkRightClickOption" value="&amp;Astrogrep zum Explorer-Kontextmenü hinzufügen" />
+      <control name="lblStoredPaths" value="Anzahl Einträge der zuletzt benutzten Pfade." />
       <control name="btnEdit" value="&amp;Bearbeiten..." />
       <control name="btnRemove" value="&amp;Löschen" />
       <control name="btnAdd" value="&amp;Hinzufügen..." />
@@ -166,8 +166,8 @@
       <control name="chkStartMenuShortcut" value="Verknüpfung im Start&amp;menü"/>
       <control name="ShortcutGroup" value="Shortcuts"/>
       <control name="btnFindFont" value="&amp;Schriftart wählen..."/>
-      <control name="chkShowExclusionErrorMessage" value="&amp;Eingabeaufforderung anzeigen, wenn kein Suchergebnis aufgrund von Ausschlüssen im Suchbegriff vorliegt oder ein Fehler auftritt"/>
-      <control name="chkSaveSearchOptions" value="&amp;Sucheoptionen speichern beim Beenden"/>
+      <control name="chkShowExclusionErrorMessage" value="&amp;Meldungsfenster anzeigen, wenn aufgrund von Ausschluss-Einstellungen Objekte ausgeschlossen wurden oder ein Fehler auftritt"/>
+      <control name="chkSaveSearchOptions" value="&amp;Suchoptionen beim Beenden speichern"/>
       <control name="grpFileList" value="Dateiliste" />
       <control name="btnFileFindFont" value="Schriftart wählen..."/>
       <control name="chkDetectFileEncoding" value="Datei-Kodierung erkennen"/>
@@ -181,9 +181,8 @@
       <control name="btnFileEncodingDelete" value="&amp;Löschen"/>
       <control name="lblPerformance" value="Leistung"/>
       <control name="chkUseEncodingCache" value="Zwischenspeicher für erkannte Kodierungen aktivieren"/>
-      <control name="btnCacheClear" value="Zwischenspeicher leeren"/>
+      <control name="btnCacheClear" value="Speicher leeren"/>
       <control name="lblForceEncoding" value="Kodierung erzwingen"/>
-      <control name="ThemeGroup" value="Thema"/>
    </screen>
 
    <screen name="frmPrint" value="Drucken">
@@ -286,7 +285,7 @@
       <text name="SearchStarted" value="Suche begonnen"/>
       <text name="SearchSearching" value="Durchsuche {0}"/>
       <text name="SearchSearchingByPlugin" value="Plugin {0} wurde verwendet, um die Datei zu suchen." />
-      <text name="SearchExplorerItem" value="Suche nach {0}..."/>
+      <text name="SearchExplorerItem" value="Suche mit {0}..."/>
 
       <text name="ResultsPreviewSpacerText" value="(21)"/>
       <text name="ResultsPreviewText" value="&#x9;Beispielergebnisse, Zeile und Fund werden angezeigt"/>
@@ -395,10 +394,6 @@
       <text name="Documents" value="Unterlagen"/>
       <text name="Code" value="Code"/>
       <text name="Media" value="Medien"/>
-
-      <text name="Theme.System" value="System"/>
-      <text name="Theme.Light" value="Licht"/>
-      <text name="Theme.Dark" value="Dunkel"/>
    </generic>
 
 </language>

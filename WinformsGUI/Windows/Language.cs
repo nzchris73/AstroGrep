@@ -976,14 +976,15 @@ namespace AstroGrep.Windows
 				{
 					// load our internally defined languages
 					new LanguageItem("English", "en-us"),
-					new LanguageItem("EnglishGB", "en-gb"),
+					new LanguageItem("English (GB)", "en-gb"),
 					new LanguageItem("Français", "fr-fr"),
 					new LanguageItem("Español", "es-es"),
 					new LanguageItem("Deutsch", "de-de"),
 					new LanguageItem("Italiano", "it-it"),
 					new LanguageItem("Dansk", "da-dk"),
-					new LanguageItem("Polski", "pl-pl")
-				};
+					new LanguageItem("Polski", "pl-pl"),
+					new LanguageItem("Português (BR)", "pt-br")
+                };
 			}
 		}
 

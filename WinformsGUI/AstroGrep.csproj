@@ -142,6 +142,7 @@
     <EmbeddedResource Include="Language\es-es.xml" />
     <EmbeddedResource Include="Language\it-it.xml" />
     <EmbeddedResource Include="Language\fr-fr.xml" />
+    <EmbeddedResource Include="Language\pt-br.xml" />
     <EmbeddedResource Include="Output\Output-fileNameOnly.html" />
     <EmbeddedResource Include="Output\Output.css" />
     <EmbeddedResource Include="Output\Output.html" />
@@ -189,6 +190,9 @@
   </ItemGroup>
   <ItemGroup Label="EmbeddedResource items now included by globbing that were not in the original project file">
     <EmbeddedResource Remove="Windows\Controls\PictureButton.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Language\pt-br.xml" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>if exist "$(ProjectDir)Images\AstroGrep_256x256.png" copy "$(ProjectDir)Images\AstroGrep_256x256.png" "$(TargetDir)" /y</PostBuildEvent>
