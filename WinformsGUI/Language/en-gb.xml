@@ -6,7 +6,7 @@
       <control name="lblFileTypes" value="File Types"/>
       <control name="btnCancel" value="&amp;Cancel"/>
       <control name="lblSearchPath" value="Search Path"/>
-      <control name="chkNegation" value="&amp;Negation" tooltip="Find the files without the Search Text in them"/>
+      <control name="chkNegation" value="&amp;Exclude" tooltip="Find the files without the Search Text in them"/>
       <control name="chkFileNamesOnly" value="Show File Names &amp;Only" tooltip="Show names but not contents of files that have matches (may be faster on large files)"/>
       <control name="chkRecurse" value="Search Su&amp;bfolders" tooltip="Search in subfolders"/>
       <control name="chkWholeWordOnly" value="&amp;Whole Word" tooltip="Only match entire words (not parts of words)"/>

@@ -6,6 +6,8 @@
       <control name="lblFileTypes" value="Dateitypen" />
       <control name="btnCancel" value="Abbre&amp;chen" />
       <control name="lblSearchPath" value="Suchpfad" />
+      <control name="lblContextLines" value="Kontextzeilen" tooltip="Zeigt Zeilen über und unter dem Fund an" />
+      <control name="txtContextLines" tooltip="Zeigt Zeilen über und unter dem Fund an" />
       <control name="chkNegation" value="&amp;Negierung" tooltip="Suche nach Dateien, die den Suchtext nicht enthalten" />
       <control name="chkFileNamesOnly" value="&amp;Zeige nur Dateinamen" tooltip="Zeigt nur die Dateinamen an, in welchen der Suchtext vorkommt (kann für große Dateien schneller sein)" />
       <control name="chkRecurse" value="&amp;Rekursiv" tooltip="Suche auch in Unterverzeichnissen" />
@@ -17,12 +19,11 @@
       <control name="lblSearchOptions" value="Such-Einstellungen" />
       <control name="picBrowse" tooltip="Durchsuchen...(Umschalt-Klicken zum Anhängen)" />
       <control name="lnkExclusions" value="Ausschlüsse" />
-      <control name="lnkPlugins" value="Erweiterungen" />
       <control name="lstFileNames">
-         <menuitem index="0" value="Alle Spalten kopieren" />
-      	 <menuitem index="1" value="Dateinamen kopieren" />
+      <menuitem index="0" value="Alle Spalten kopieren" />
+      <menuitem index="1" value="Dateinamen kopieren" />
          <menuitem index="2" value="Pfad kopieren" />
-         <menuitem index="3" value="Vollen Pfad mit Dateiname kopieren" />
+      <menuitem index="3" value="Vollen Pfad mit Dateiname kopieren" />
          <menuitem index="4" value="-" />
          <menuitem index="5" value="Dateioperationen">
             <menuitem index="0" value="Kopieren" />
@@ -46,7 +47,6 @@
          <menuitem index="5" value="&amp;Ergebnisse drucken..." />
          <menuitem index="6" value="-" />
          <menuitem index="7" value="Bee&amp;nden" />
-         <menuitem index="8" value="Beenden Sie alle" />
       </menu>
       <menu index="1" value="&amp;Bearbeiten">
          <menuitem index="0" value="&amp;Alle Dateien auswählen" />
@@ -67,9 +67,8 @@
          <menuitem index="7" value="Zeilenumbruch" />
          <menuitem index="8" value="&amp;Führende Leerzeichen entfernen"/>
          <menuitem index="9" value="Gesamte Datei" />
-         <menuitem index="10" value="Alle Zeichen anzeigen" />
-         <menuitem index="11" value="-" />
-         <menuitem index="12" value="Alle Ergebnisse" />
+         <menuitem index="10" value="-" />
+         <menuitem index="11" value="Alle Ergebnisse" />
       </menu>
       <menu index="3" value="&amp;Werkzeuge">
          <menuitem index="0" value="&amp;Zuletzt benutzte Listen löschen">
@@ -95,26 +94,10 @@
       </menu>
 
       <!-- status bar items default state-->
-      <control name="sbTotalCountPanel" value="Gesamtzahl: 0 / 0"/>
+      <control name="sbTotalCountPanel" value="Gesamtzahl: 0"/>
       <control name="sbFileCountPanel" value="Datei: 0 / 0"/>
       <control name="sbFilterCountPanel" value="Ausschlüsse: 0" tooltip="Doppelklicken zur Anzeige von Ausschlüssen."/>
       <control name="sbErrorCountPanel" value="Fehler: 0" tooltip="Doppelklicken zum Anzeige der Fehlern"/>
-
-      <!-- Results Toolstrip -->
-      <control name="ResultsZoomInButton" tooltip="Vergrößen (Ctrl+Mouse Wheel Up)" />
-      <control name="ResultsZoomOutButton" tooltip="Verkleinern (Ctrl+Mouse Wheel Down)" />
-      <control name="ResultsZoomResetButton" tooltip="Auf Standardgröße zurücksetzen" />
-      <control name="ResultsViewLineNumbersButton" tooltip="Zeilennummern" />
-      <control name="ResultsViewWordWrapButton" tooltip="Zeilenumbruch" />
-      <control name="ResultsViewRemovingLeadingButton" tooltip="Führende Leerzeichen entfernen" />
-      <control name="ResultsViewEntireFileButton" tooltip="Gesamte Datei" />
-      <control name="ResultsViewShowCharactersButton" tooltip="Alle Zeichen anzeigen" />
-      <control name="ResultsViewAllResultsButton" tooltip="Alle Ergebnisse" />
-      <control name="ResultsContextLinesLabel" value="Kontextzeilen" />
-      <control name="ResultsContextLinesBeforeCombo" tooltip="Zeigt Zeilen über dem Fund an" />
-      <control name="ResultsContextLinesAfterCombo" tooltip="Zeigt Zeilen unter dem Fund an" />
-      <control name="ResultsNavPrevButton" tooltip="Zum vorherigen Spiel wechseln" />
-      <control name="ResultsNavNextButton" tooltip="Zum nächsten Spiel gehen" />
    </screen>
 
    <screen name="frmAbout" value="Über {0}">
@@ -162,9 +145,14 @@
       <control name="tabGeneral" value="Allgemein" />
       <control name="tabTextEditors" value="Texteditoren" />
       <control name="LanguageGroup" value="Sprache"/>
+      <control name="tabPlugins" value="Erweiterungen"/>
       <control name="chkDesktopShortcut" value="Verknüpfung auf dem &amp;Desktop"/>
       <control name="chkStartMenuShortcut" value="Verknüpfung im Start&amp;menü"/>
       <control name="ShortcutGroup" value="Shortcuts"/>
+      <control name="PluginDetailsGroup" value="Details zu Erweiterungen"/>
+      <control name="lblPluginDetailName" value="Name:"/>
+      <control name="lblPluginDetailVersion" value="Version:"/>
+      <control name="lblPluginDetailAuthor" value="Author:"/>
       <control name="btnFindFont" value="&amp;Schriftart wählen..."/>
       <control name="chkShowExclusionErrorMessage" value="&amp;Eingabeaufforderung anzeigen, wenn kein Suchergebnis aufgrund von Ausschlüssen im Suchbegriff vorliegt oder ein Fehler auftritt"/>
       <control name="chkSaveSearchOptions" value="&amp;Sucheoptionen speichern beim Beenden"/>
@@ -183,7 +171,6 @@
       <control name="chkUseEncodingCache" value="Zwischenspeicher für erkannte Kodierungen aktivieren"/>
       <control name="btnCacheClear" value="Zwischenspeicher leeren"/>
       <control name="lblForceEncoding" value="Kodierung erzwingen"/>
-      <control name="ThemeGroup" value="Thema"/>
    </screen>
 
    <screen name="frmPrint" value="Drucken">
@@ -192,10 +179,6 @@
       <control name="cmdPageSetup" value="Seitenein&amp;stellung" />
       <control name="cmdPrint" value="&amp;Drucken" />
       <control name="cmdPreview" value="&amp;Vorschau" />
-      <control name="lblResultsMatch" value="Suchergebnisse:" />
-      <control name="rdbNone" value="&amp;Keiner" />
-      <control name="rdbBold" value="&amp;Deutlich" />
-      <control name="rdbColor" value="&amp;Farbe" />
    </screen>
 
    <screen name="frmExclusions" value="Ausschlüsse">
@@ -238,15 +221,6 @@
       <control name="btnCancel" value="Abbre&amp;chen" />
       <control name="lblFilePath" value="Dateipfad" />
       <control name="lblEncoding" value="Codierung" />
-   </screen>
-
-   <screen name="frmPlugins" value="Erweiterungen">
-      <control name="btnOK" value="&amp;OK" />
-      <control name="btnCancel" value="Abbre&amp;chen" />
-      <control name="PluginDetailsGroup" value="Details zu Erweiterungen"/>
-      <control name="lblPluginDetailName" value="Name:"/>
-      <control name="lblPluginDetailVersion" value="Version:"/>
-      <control name="lblPluginDetailAuthor" value="Author:"/>
    </screen>
 
    <generic>
@@ -314,7 +288,7 @@
       <text name="ResultsColumnSize" value="Größe"/>
       <text name="ResultsColumnFileExt" value="Dateierweiterung"/>
 
-      <text name="ResultsStatusTotalCount" value="Gesamttreffer: {0} / {1}"/>
+      <text name="ResultsStatusTotalCount" value="Gesamttreffer: {0}"/>
       <text name="ResultsStatusFileCount" value="Datei: {0} / {1}"/>
       <text name="ResultsStatusFilterCount" value="Ausschlüsse: {0}"/>
       <text name="ResultsStatusErrorCount" value="Fehler: {0}"/>
@@ -356,7 +330,6 @@
       <text name="Exclusions.None" value=""/>
       <text name="Exclusions.Equals" value="gleich"/>
       <text name="Exclusions.Contains" value="enthält"/>
-      <text name="Exclusions.NotContains" value="Nicht enthält"/>
       <text name="Exclusions.StartsWith" value="beginnt mit"/>
       <text name="Exclusions.EndsWith" value="endet mit"/>
       <text name="Exclusions.NotEquals" value="Ungleich" />
@@ -369,7 +342,7 @@
       <text name="Exclusions.Error.NoCategory" value="Bitte wählen Sie eine Kategorie."/>
       <text name="Exclusions.Error.NoType" value="Bitte wählen Sie einen Typ."/>
       <text name="Exclusions.Error.NoValue" value="Bitte geben Sie einen Wert ein."/>
-      <!--<text name="Exclusions.Error.InvalidExtensionFormat" value="Ungültige Datei-Endung-Format. Das Format ist .xxx"/>-->
+      <!--<text name="Exclusions.Error.InvalidExtensionFormat" value="Ungültige Dateierweiterung. Das Format ist .xxx"/>-->
       <text name="Exclusions.Error.InvalidOptions" value="Bitte wählen Sie einen gültigen Optionswert."/>
       <text name="Exclusions.Error.TypeCategoryLimit" value="Leider können Sie nicht mehr als ein {0}-Typ unter {1} Kategorie haben." />
 
@@ -390,15 +363,6 @@
       <text name="FileEncoding.Performance.Default" value="Default"/>
       <text name="FileEncoding.Performance.Accuracy" value="Genauigkeit"/>
       <text name="FileEncoding.CacheCleared" value="Zwischenspeicher erfolgreich gelöscht."/>
-
-      <text name="All" value="Alle"/>
-      <text name="Documents" value="Unterlagen"/>
-      <text name="Code" value="Code"/>
-      <text name="Media" value="Medien"/>
-
-      <text name="Theme.System" value="System"/>
-      <text name="Theme.Light" value="Licht"/>
-      <text name="Theme.Dark" value="Dunkel"/>
    </generic>
 
 </language>
