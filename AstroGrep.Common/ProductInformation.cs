@@ -97,42 +97,61 @@ namespace AstroGrep.Common
 		{
 			try
 			{
-#if NET10_0_WINDOWS
-				// On .NET 10 (Core), UseShellExecute must be true to open URLs
-				var processInfo = new ProcessStartInfo
+				// Try the modern approach first that works on all platforms
+				var psi = new ProcessStartInfo
 				{
 					FileName = url,
-					UseShellExecute = true
+					UseShellExecute = true,  // Use shell to handle the URL
+					CreateNoWindow = true   // Don't show a console window
 				};
-				Process.Start(processInfo);
-#else
-				// On .NET Framework, UseShellExecute defaults to true
-				Process.Start(url);
-#endif
+				Process.Start(psi);
 			}
 			catch
 			{
-				// If Process.Start fails, attempt fallback using explicit browser command
+				// If that fails, try platform-specific fallbacks
 				try
 				{
-#if _WINDOWS
-					Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
-#else
-					// On non-Windows platforms
-					if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
+					if (System.Runtime.InteropServices.RuntimeInformation
+						.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
 					{
-						Process.Start("xdg-open", url);
+						// Windows fallback: use explorer or start command
+						Process.Start(new ProcessStartInfo
+						{
+							FileName = "cmd",
+							Arguments = $"/c start {url}",
+							CreateNoWindow = true,
+							UseShellExecute = false
+						});
 					}
-					else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+					else if (System.Runtime.InteropServices.RuntimeInformation
+						.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
 					{
-						Process.Start("open", url);
+						// Linux fallback
+						Process.Start(new ProcessStartInfo
+						{
+							FileName = "xdg-open",
+							Arguments = url,
+							UseShellExecute = false,
+							CreateNoWindow = true
+						});
 					}
-#endif
+					else if (System.Runtime.InteropServices.RuntimeInformation
+						.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+					{
+						// macOS fallback
+						Process.Start(new ProcessStartInfo
+						{
+							FileName = "open",
+							Arguments = url,
+							UseShellExecute = false,
+							CreateNoWindow = true
+						});
+					}
 				}
-				catch
+				catch (Exception fallbackEx)
 				{
-					// Silently fail if all attempts to open the URL fail
-					System.Diagnostics.Debug.WriteLine($"Failed to open URL: {url}");
+					// Log for debugging - only in debug builds
+					System.Diagnostics.Debug.WriteLine($"Failed to open URL '{url}': {fallbackEx.Message}");
 				}
 			}
 		}
