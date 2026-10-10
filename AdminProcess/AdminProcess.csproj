@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputType>Exe</OutputType>
     <AssemblyName>AstroGrep.AdminProcess</AssemblyName>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -20,7 +21,7 @@
     </Compile>
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)WinformsGUI\$(OutDir)\$(TargetFileName)" /Y
-copy "$(TargetPath).config" "$(SolutionDir)WinformsGUI\$(OutDir)\$(TargetFileName).config" /Y</PostBuildEvent>
+    <PostBuildEvent>if exist "$(TargetPath)" copy "$(TargetPath)" "$(SolutionDir)WinformsGUI\$(OutDir)$(TargetFileName)" /Y
+if exist "$(TargetPath).config" copy "$(TargetPath).config" "$(SolutionDir)WinformsGUI\$(OutDir)$(TargetFileName).config" /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>
